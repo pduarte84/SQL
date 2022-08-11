@@ -1,0 +1,64 @@
+CREATE TABLE Actors (Id INTEGER primary key AUTOINCREMENT, First_Name TEXT, Last_Name TEXT, DateofBirth TEXT, Years_Active_from INTEGER, Years_Active_until INTEGER, Partners_id integer, Years_Married_From INTEGER, Years_married_until INTEGER);
+ 
+INSERT INTO Actors (First_Name, Last_Name, DateofBirth, Years_Active_from, Years_Active_until, Partners_id, Years_Married_From,
+Years_married_until) VALUES("Brad", "Pitt", "1963-12-18", "1987", "2022", "2", "2014", "2019");
+INSERT INTO Actors (First_Name, Last_Name, DateofBirth, Years_Active_from, Years_Active_until, Partners_id, Years_Married_From,
+ Years_married_until) VALUES("Angelina", "Jolie", "1975-06-04", "1982", "2022", "1", "2014", "2019");
+INSERT INTO Actors (First_Name, Last_Name, DateofBirth, Years_Active_from, Years_Active_until, Partners_id, Years_Married_From,
+ Years_married_until) VALUES("Jennifer", "Aniston", "1969-02-11", "1987", "2022", "1", "2000", "2005");
+INSERT INTO Actors (First_Name, Last_Name, DateofBirth, Years_Active_from, Years_Active_until, Partners_id, Years_Married_From,
+ Years_married_until) VALUES("Tom", "Cruise", "1962-07-03", "1981", "2022", "7", "1990", "2001");
+INSERT INTO Actors (First_Name, Last_Name, DateofBirth, Years_Active_from, Years_Active_until, Partners_id, Years_Married_From,
+Years_married_until) VALUES("Leonardo", "Dicaprio", "1974-11-11", "1989", "2022", "0", "2017", "2022");
+INSERT INTO Actors (First_Name, Last_Name, DateofBirth, Years_Active_from, Years_Active_until, Partners_id, Years_Married_From,
+ Years_married_until) VALUES("Cillian", "Murphy", "1976-05-25", "1996", "2022", "0", "2004", "2022");
+INSERT INTO Actors (First_Name, Last_Name, DateofBirth, Years_Active_from, Years_Active_until, Partners_id, Years_Married_From,
+ Years_married_until) VALUES("Nicole", "Kidman", "1967-06-20", "1983", "2022", "4", "1990", "2001");
+ 
+ 
+CREATE TABLE movies (id INTEGER primary key AUTOINCREMENT, Movie_name TEXT, Movie_Year TEXT, Actorsid INTEGER);
+
+INSERT INTO movies (Movie_name, Movie_Year, Actorsid) VALUES("Interview with the Vampire",1994, 1);
+INSERT INTO movies (Movie_name, Movie_Year, Actorsid) VALUES("Mr and Mrs Smith",2005,1);
+INSERT INTO movies (Movie_name, Movie_Year, Actorsid) VALUES("Friends","1995",3);
+INSERT INTO movies (Movie_name, Movie_Year, Actorsid) VALUES("Inception","2010",5);
+INSERT INTO movies (Movie_name, Movie_Year, Actorsid) VALUES("Girl Interrupted","1999",2);
+INSERT INTO movies (Movie_name, Movie_Year, Actorsid) VALUES("Cold Mountain","2003",7);
+INSERT INTO movies (Movie_name, Movie_Year, Actorsid) VALUES("Eyes Wide Shut", "1999",4);
+INSERT INTO movies (Movie_name, Movie_Year, Actorsid) VALUES("Inception","2010",6);
+INSERT INTO movies (Movie_name, Movie_Year, Actorsid) VALUES("Mr and Mrs Smith",2005,2);
+INSERT INTO movies (Movie_name, Movie_Year, Actorsid) VALUES("Eyes Wide Shut", "1999",7);
+
+CREATE TABLE movies_partner (id integer primary key autoincrement, movieproject1_id INTEGER, movieproject2_id INTEGER);
+
+INSERT INTO movies_partner (movieproject1_id, movieproject2_id) VALUES("1","2");
+INSERT INTO movies_partner (movieproject1_id, movieproject2_id) VALUES("1","3");
+INSERT INTO movies_partner (movieproject1_id, movieproject2_id) VALUES("4","7");
+INSERT INTO movies_partner (movieproject1_id, movieproject2_id) VALUES("5","6");
+
+--Display joing tables Actor and Movies.
+SELECT * FROM actors
+INNER JOIN movies
+ON actors.id=movies.actorsid;
+
+--Display Names of Actors and Movies worked together. 
+SELECT actors.first_name, actors.last_name, movies.movie_name
+FROM actors
+INNER JOIN movies
+ON actors.id=movies.actorsid;
+
+Display Actors and Spouse Name
+SELECT actors.first_name, actors.last_name, marryto.first_name as couple, marryto.last_name
+FROM actors
+JOIN actors as Marryto
+ON actors.id = marryto.partners_id;
+
+
+--Display name of actors and Movies Partners
+SELECT a.first_name, b.first_name from movies_partner
+JOIN actors a
+ON movies_partner.movieproject1_id = a.id
+JOIN actors b
+ON movies_partner.movieproject2_id = b.id;
+
+
