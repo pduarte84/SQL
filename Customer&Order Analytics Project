@@ -1,0 +1,27 @@
+--SELECT * FROM BIT_DB.customers LIMIT 20;
+--SELECT COUNT(*) FROM BIT_DB.JanSales;
+--SELECT count(product) FROM BIT_DB.JanSales WHERE product = 'iPhone';
+--SELECT acctnum FROM "BIT_DB"."customers"
+--LEFT JOIN "BIT_DB"."febsales"
+--ON customers.order_id=Febsales.orderID
+--SELECT price, product FROM BIT_DB.JanSales GROUP BY product order by price asc;
+--SELECT distinct Product, price
+--FROM BIT_DB.JanSales
+--WHERE  price in (SELECT min(price) FROM BIT_DB.JanSales)
+--SELECT sum(quantity)*price AS revenue, product FROM BIT_DB.JanSales GROUP BY product
+--SELECT * FROM BIT_DB.FebSales WHERE location like '548 lincoln st, seattle, wa%' 
+--SELECT SUM(Quantity) as cantidad, product, SUM(Quantity)*price as Dinero
+--FROM BIT_DB.febsales where location like '548 lincoln st, seattle, wa%' GROUP BY product
+--select count(cust.acctnum), avg(quantity*price)
+--FROM BIT_DB.FebSales Feb
+--LEFT JOIN BIT_DB.customers cust
+--ON FEB.orderid=cust.order_id
+--WHERE Feb.Quantity>2
+
+SELECT orderdate FROM BIT_DB.FebSales WHERE orderdate between '02/13/19 00:00' and '02/18/19 00:00'
+SELECT location 
+FROM BIT_DB.Febsales
+where orderdate = '02/18/19 01:35'
+SELECT sum(quantity)
+FROM BIT_DB.FebSales
+WHERE orderdate like '02/18/19%'
