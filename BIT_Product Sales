@@ -126,3 +126,27 @@ AND orderid<> 'order ID'
 group by product
 order by sum(quantity*price) desc
 limit 1; 
+
+#21. What is the amount of energy an artist generate?
+SELECT artist_name, sum(energy)
+FROM BIT_DB.Spotifydata
+Group by artist_name
+order by sum(energy) asc;
+
+#22. what is the average tempo when the artist is above 90 popular?
+SELECT artist_name, tempo, popularity
+FROM BIT_DB.Spotifydata
+WHERE popularity = 90; 
+
+#23. what are the Top 10 Tracks based on popularity? 
+SELECT track_name, artist_name, popularity
+FROM BIT_DB.spotifydata
+WHERE popularity >90
+order BY popularity desc;
+
+#24. What is the average tempo per artist?
+SELECT AVG(tempo), artist_name
+FROM BIT_DB.Spotifydata
+GROUP BY artist_name
+order by AVG(tempo) desc;
+
