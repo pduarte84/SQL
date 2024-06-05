@@ -150,3 +150,18 @@ FROM BIT_DB.Spotifydata
 GROUP BY artist_name
 order by AVG(tempo) desc;
 
+CTE queries
+
+#25. your boss wants a list of all the bike lanes that have an average safety rating of 4.0 or higher.She also wants to see the average safety rating for each of those bike lanes, and a label that says "Safe Lane.
+
+WITH Lanes_cte As (SELECT street, AVG(safetyrating) Avg_Safety
+FROM CityBikeLanes
+GROUP BY 1)
+
+SELECT street, avg_safety, 'Safe Lane' as 'label'
+FROM lanes_cte
+WHERE avg_safety>= 4.0
+GROUP BY street;
+
+
+
