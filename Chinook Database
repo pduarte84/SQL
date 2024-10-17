@@ -66,6 +66,12 @@ where invoicedate >'2009-01-01'
 AND Invoicedate <'2009-12-31';
 
 #10. What are the total sales for 2009?
+
+SELECT sum(total) 
+FROM Invoices
+where invoicedate >'2009-01-01'
+and invoicedate <'2009-12-31';
+
 #11. Write a query that includes the purchased track name with each invoice line ID.
 #12. Write a query that includes the purchased track name AND artist name with each invoice line ID.
 #13. Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
